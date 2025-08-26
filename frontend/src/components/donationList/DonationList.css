@@ -1,0 +1,209 @@
+/* Style for the overall donations list section */
+.donations-list {
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 40px; /* Padding around the section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Title styling for the donations list */
+.donations-list h1 {
+    font-size: 2em; /* Larger font size */
+    margin-bottom: 20px; /* Space below title */
+    color: #333; /* Dark text color */
+    text-align: center; /* Center-align title */
+}
+
+/* Error message styling */
+.error-message {
+    color: red; /* Red color for errors */
+    text-align: center; /* Center-align error messages */
+    margin-bottom: 20px; /* Space below error message */
+}
+
+/* Table styling */
+table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Collapse borders */
+    margin-bottom: 20px; /* Space below the table */
+}
+
+/* Table headers */
+th, td {
+    padding: 10px; /* Padding for cells */
+    border: 1px solid #ccc; /* Border styling */
+    text-align: left; /* Left-align text */
+}
+
+/* Button styling */
+button {
+    margin-right: 5px; /* Space between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #ff9800; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 8px 12px; /* Padding inside buttons */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #754905; /* Darker shade on hover */
+}
+
+donation-intro {
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Space below the intro section */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+}
+
+.donation-intro h2 {
+    font-size: 24px;
+    color: #333; /* Darker font for the heading */
+    margin-bottom: 10px;
+}
+
+.donation-intro p {
+    font-size: 16px;
+    color: #555; /* Slightly lighter color for paragraph text */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.donation-intro strong {
+    color:  #ff9800; /* Highlighted text color for 'Donate' */
+    font-weight: bold;
+}
+
+.donation-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donation-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.donation-form input,
+.donation-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.donation-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    color: #f00;
+    background: transparent;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.donate-section {
+    background-color: #f9f9f9; 
+    padding: 40px; 
+    text-align: center; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.donate-title {
+    font-size: 2em; 
+    margin-bottom: 20px; 
+    color: #333; 
+}
+
+.donation-intro {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 10px; 
+    color: #555; 
+}
+
+.donation-container {
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    padding: 20px; 
+}
+
+
+.donation-form {
+    background: #fff; 
+    border-radius: 8px; 
+    padding: 30px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    margin: auto; 
+    width: 800px; 
+    position: relative; 
+    border: 3px;
+}
+
+.cancel-button {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background: transparent; 
+    border: none; 
+    color: #ff9800; 
+    cursor: pointer; 
+    font-size: 0.9em; 
+}
+
+.donation-form h2 {
+    font-size: 1.5em; 
+    margin-bottom: 15px; 
+    color: #333; 
+}
+
+.donation-form label {
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+.donation-form input,
+.donation-form textarea {
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+.donation-form button {
+    background-color: #ff9800; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.donation-form button:hover {
+    background-color: #754905; 
+}
+
+

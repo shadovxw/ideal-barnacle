@@ -1,0 +1,11 @@
+.location-info {
+    background-color:  #f8f8f8; 
+    color: #000000; 
+    text-align: center; 
+    padding: 20px; 
+    font-family: Helvetica-BoldOblique
+}
+
+.location-info h2{
+    font-size: 15px;
+}

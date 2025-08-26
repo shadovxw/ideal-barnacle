@@ -1,0 +1,200 @@
+.footer-container {
+    background-color: #1c1b24;
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 10px;
+  }
+  
+  .footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: Courier
+  }
+  
+  .footer-section h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-family: Courier
+  }
+  
+  .footer-section p, .footer-section a {
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footer-section p {
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #ff9800;
+  }
+  
+  .social-links a {
+    margin-right: 15px;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    }
+
+    .social-links a:hover {
+    color: #ff9800;
+    }
+  
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #555;
+    padding-top: 10px;
+  }
+  
+  .footer-bottom p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .contact-icons a {
+    color: #fff;
+    margin-right: 15px;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .contact-icons a:hover {
+    color: #ff9800;
+  }
+  
+  .contact-icons .hover-text {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .contact-icons .hover-text {
+    display: none;
+  }
+  
+  .contact-icons a:hover .hover-text {
+    display: inline-block;
+  }
+    
+  .contact-icons {
+    display: flex;
+    flex-direction: column; /* Stack icons vertically */
+    align-items: flex-start; /* Align items to the start */
+}
+
+    .contact-icons a {
+        color: #fff;
+        margin-bottom: 10px; /* Space between icons */
+        position: relative;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        
+    }
+
+    .contact-icons a:hover {
+        color: #ff9800;
+    }
+
+    .contact-icons .hover-text {
+        position: absolute;
+        left: 100%; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        white-space: nowrap;
+        opacity: 0; 
+        transition: opacity 0.3s ease-in-out;
+        margin-left: 10px; 
+        
+    }
+
+    .contact-icons a:hover .hover-text {
+        display: inline-block;
+        opacity: 1; 
+    }
+
+  /* Subscribe Section */
+    .subscribe-section {
+    flex: 1;
+    }
+  
+  .subscribe-form {
+    display: flex;
+    flex-direction: row; /* Align input and button side-by-side */
+    gap: 10px; /* Space between input and button */
+    max-width: 400px; /* Optional: restrict the width of the form */
+  }
+  
+  .subscribe-form input {
+    flex: 2;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .subscribe-button {
+    flex: 1;
+    padding: 10px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .subscribe-button:hover {
+    background-color: #e68900;
+  }
+  

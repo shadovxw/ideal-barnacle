@@ -1,0 +1,129 @@
+.donate-section {
+    background-color: #f9f9f9; 
+    padding: 40px; 
+    text-align: center; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.donate-title {
+    font-size: 2em; 
+    margin-bottom: 20px; 
+    color: #333; 
+}
+
+.donation-intro {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 10px; 
+    color: #555; 
+}
+
+.donation-container {
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    padding: 20px; 
+}
+
+.donation-frame {
+    background: #fff; 
+    padding: 20px; 
+    margin: 10px; 
+    border-radius: 5px; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); 
+    flex: 1 1 calc(25% - 20px); 
+    min-width: 200px; 
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateY(50px);
+    opacity: 0;
+    text-align: center;
+}
+
+/* Add animation when the frame is visible */
+.donation-frame.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.donation-frame:hover {
+    transform: scale(1.05); 
+}
+
+.donation-form {
+    background: #fff; 
+    border-radius: 8px; 
+    padding: 30px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    margin: auto; 
+    width: 800px; 
+    position: relative; 
+}
+
+.cancel-button {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background: transparent; 
+    border: none; 
+    color: #ff9800; 
+    cursor: pointer; 
+    font-size: 0.9em; 
+}
+
+.donation-form h2 {
+    font-size: 1.5em; 
+    margin-bottom: 15px; 
+    color: #333; 
+}
+
+.donation-form label {
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+.donation-form input,
+.donation-form textarea {
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+.donation-button {
+    background-color: #ff9800; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.donation-button:hover {
+    background-color: #754905; 
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 3px;
+}
+
