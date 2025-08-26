@@ -18,9 +18,7 @@ const CampaignSection = () => {
     const getFetchedData = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("/");
-            console.log('Datalist def:', response); 
-            console.log('Datalist frg:', response.data);
+            const response = await axios.get("/users");
             if (response.data.success) {
                 setDataList(response.data.users); 
                 console.log('Datalist abcd:', dataList); 
@@ -90,8 +88,8 @@ const CampaignSection = () => {
                                     {dataList.length > 0 ? (
                                         dataList.map((donation, index) => (
                                             <div className="donation-item" key={index}>
-                                                <span>{"Anonymous"} - {donation.donationType}</span>
-                                                <span className="donation-date">{donation.createdAt}</span>
+                                                <span>{"Anonymous"} - {donation.donation_type}</span>
+                                                <span className="donation-date">{donation.created_at}</span>
                                             </div>
                                         ))
                                     ) : (
