@@ -4,11 +4,11 @@ import axios from 'axios';
 
 import Gpay from '../payment/Gpay';
 
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "http://localhost:5000/users";
 
 const Donate = ({ id }) => {
 
-    const [donationType, setDonationType] = useState(null);
+    const [donation_type, setdonation_type] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState({
         name: '' ,  
@@ -16,7 +16,7 @@ const Donate = ({ id }) => {
         mobile: '',
         address: '',
         amount: '',
-        donationType: '',
+        donation_type: '',
         details: '',
     });
 
@@ -24,24 +24,24 @@ const Donate = ({ id }) => {
     const [isAnimated, setIsAnimated] = useState(false);
 
     const handleDonateClick = (type) => {
-        setDonationType(type);
+        setdonation_type(type);
         setFormData(prevData => ({
             ...prevData,
-            donationType: type 
+            donation_type: type 
         }));
         setShowForm(true);
     };
 
     const handleCancelClick = () => {
         setShowForm(false);
-        setDonationType(null);
+        setdonation_type(null);
         setFormData({
             name: '',
             email: '',
             mobile: '',
             address: '',
             amount: '',
-            donationType: '',
+            donation_type: '',
             details: '',
         });
         setErrorMessage(null); 
@@ -54,7 +54,7 @@ const Donate = ({ id }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(`Donating ${formData.amount} for ${donationType} with details: ${formData.details}`);
+        console.log(`Donating ${formData.amount} for ${donation_type} with details: ${formData.details}`);
         try {
             const response = await axios.post("/create", formData);
             console.log(response.data);
@@ -68,7 +68,7 @@ const Donate = ({ id }) => {
                     mobile: '',
                     address: '',
                     amount: '',
-                    donationType: " ",
+                    donation_type: " ",
                     details: '',
                 });
                 handleCancelClick(); 
@@ -119,7 +119,7 @@ const Donate = ({ id }) => {
                 {showForm && (
                     <div className="donation-form">
                         <button className="cancel-button" onClick={handleCancelClick}>X Cancel</button>
-                        <h2>{`Donate ${donationType.charAt(0).toUpperCase() + donationType.slice(1)}`}</h2>
+                        <h2>{`Donate ${donation_type.charAt(0).toUpperCase() + donation_type.slice(1)}`}</h2>
                         <form onSubmit={handleSubmit}>
                             {/* Form fields */}
                             <label htmlFor="name">Name (Anonymous):</label>
@@ -130,21 +130,21 @@ const Donate = ({ id }) => {
                             <input type="text" id="mobile" name="mobile" required value={formData.mobile} onChange={handleChange} />
                             <label htmlFor="address">Address:</label>
                             <input type="text" id="address" name="address" value={formData.address} onChange={handleChange} />
-                            {donationType === 'money' && (
+                            {donation_type === 'money' && (
                                 <>
                                     <label htmlFor="amount">Donation Amount:</label>
                                     <input type="number" id="amount" name="amount" required value={formData.amount} onChange={handleChange} />
                                 </>
                             )}
-                            {['clothes', 'electronics', 'food'].includes(donationType) && (
+                            {['clothes', 'electronics', 'food'].includes(donation_type) && (
                                 <>
-                                    <label htmlFor="details">{`${donationType.charAt(0).toUpperCase() + donationType.slice(1)} Details:`}</label>
+                                    <label htmlFor="details">{`${donation_type.charAt(0).toUpperCase() + donation_type.slice(1)} Details:`}</label>
                                     <textarea id="details" name="details" required value={formData.details} onChange={handleChange} rows="3" style={{ width: '100%' }} />
                                 </>
                             )}
                             <button type="submit" className="donation-button">Submit Donation</button>
                         </form>
-                        {donationType === 'money' && (
+                        {donation_type === 'money' && (
                             <Gpay />
                         )}
                     </div>

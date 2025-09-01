@@ -26,6 +26,7 @@ class User(db.Model, SerializerMixin):
     newsletter = db.Column(db.Boolean)
     events_update = db.Column(db.Boolean)
     donation_made = db.Column(db.String(100))
+    details = db.Column(db.String(100))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

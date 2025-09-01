@@ -16,6 +16,7 @@ def get_by_email(emailid):
 @users_bp.route("/create", methods=["POST"])
 def create():
     data = request.json
+    print(data)
     new_user = User(**data)
     db.session.add(new_user)
     db.session.commit()
