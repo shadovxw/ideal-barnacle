@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+"scripts": {
+  "start": "cross-env NODE_ENV=production node server.js",
+  "dev": "cross-env NODE_ENV=development nodemon server.js",
+  "db:migrate": "cross-env NODE_ENV=development sequelize-cli db:migrate",
+  "db:migrate:undo": "cross-env NODE_ENV=development sequelize-cli db:migrate:undo",
+  "db:seed": "cross-env NODE_ENV=development sequelize-cli db:seed:all",
+  "db:seed:undo": "cross-env NODE_ENV=development sequelize-cli db:seed:undo:all",
+  "db:migrate:prod": "cross-env NODE_ENV=production sequelize-cli db:migrate",
+  "db:seed:prod": "cross-env NODE_ENV=production sequelize-cli db:seed:all"
+},
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.6",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0",
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
+  },
+  "type": "module"
+}
