@@ -1,25 +1,35 @@
-import express from "express";
-import cors from "cors";
-import { sequelize } from "./config/db.js";
-import usersRouter from "./routes/users.js";
-import subscriptionsRouter from "./routes/subscriptions.js";
+const express = require('express');
+const { User, Auth, Subscription, UserDetail } = require('./models');
 
 const app = express();
 app.use(express.json());
 
-// CORS
-app.use(cors({ origin: "http://localhost:3000" }));
+// Example routes
+app.post('/users', async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
-// Routes
-app.use("/users", usersRouter);
-app.use("/subscriptions", subscriptionsRouter);
+app.get('/userss', async (req, res) => {
+  try {
+    const users = await User.findAll({
+      include: [
+        { model: Auth, as: 'auths' },
+        { model: Subscription, as: 'subscriptions' },
+        { model: UserDetail, as: 'userDetail' }
+      ]
+    });
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
-// DB Connection
-sequelize.sync({ alter: true }) // creates/updates tables automatically
-  .then(() => console.log("✅ Database connected & synced"))
-  .catch(err => console.error("❌ DB error:", err));
-
-const PORT = 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

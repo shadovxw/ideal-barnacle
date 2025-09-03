@@ -4,20 +4,23 @@
     "password": "postgres",
     "database": "vyfoundation",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": 5432
   },
   "test": {
     "username": "postgres",
     "password": "postgres",
-    "database": "vyfoundation_test",
+    "database": "vyfoundation",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": 5432
   },
   "production": {
     "username": "postgres",
     "password": "postgres",
-    "database": "vyfoundation_prod",
+    "database": "vyfoundation",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": 5432
   }
 }

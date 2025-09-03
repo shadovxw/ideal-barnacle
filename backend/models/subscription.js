@@ -1,18 +1,29 @@
 'use strict';
+const { Model } = require('sequelize');
 
-import { DataTypes } from "sequelize";
-import { sequelize } from "../config/db.js";
-
-const Subscription = sequelize.define("Subscription", {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  email_id: { 
-    type: DataTypes.STRING, 
-    allowNull: false, 
-    validate: { isEmail: true } 
+module.exports = (sequelize, DataTypes) => {
+  class Subscription extends Model {
+    static associate(models) {
+      Subscription.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
+    }
   }
-}, { 
-  tableName: "subscriptions",
-  timestamps: true
-});
-
-export default Subscription;
+  
+  Subscription.init({
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    emailid: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
+    }
+  }, {
+    sequelize,
+    modelName: 'Subscription',
+  });
+  
+  return Subscription;
+};
