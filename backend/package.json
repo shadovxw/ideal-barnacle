@@ -2,16 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "cross-env NODE_ENV=production node server.js",
-    "dev": "cross-env NODE_ENV=development nodemon server.js",
-    "db:migrate": "cross-env NODE_ENV=development sequelize-cli db:migrate",
-    "db:migrate:undo": "cross-env NODE_ENV=development sequelize-cli db:migrate:undo",
-    "db:seed": "cross-env NODE_ENV=development sequelize-cli db:seed:all",
-    "db:seed:undo": "cross-env NODE_ENV=development sequelize-cli db:seed:undo:all",
-    "db:migrate:prod": "cross-env NODE_ENV=production sequelize-cli db:migrate",
-    "db:seed:prod": "cross-env NODE_ENV=production sequelize-cli db:seed:all"
-  },
+"scripts": {
+  "start": "cross-env NODE_ENV=production node server.js",
+  "dev": "cross-env NODE_ENV=development nodemon server.js",
+  "db:migrate": "sequelize-cli db:migrate",
+  "db:migrate:prod": "cross-env NODE_ENV=production sequelize-cli db:migrate",
+  "db:seed:prod": "cross-env NODE_ENV=production sequelize-cli db:seed:all"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
