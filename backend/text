@@ -1,0 +1,8 @@
+# create database first (if not already done)
+npx sequelize-cli db:create
+
+# run migrations
+npx sequelize-cli db:migrate
+
+# (optional) insert test data
+npx sequelize-cli db:seed:all

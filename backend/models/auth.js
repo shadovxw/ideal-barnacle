@@ -1,26 +1,35 @@
 'use strict';
-const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Auth extends Model {
-    static associate(models) {
-      Auth.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-    }
-  }
-  
-  Auth.init({
+  const Auth = sequelize.define('Auth', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+
     token: {
       type: DataTypes.TEXT,
       allowNull: false
     }
   }, {
-    sequelize,
-    modelName: 'Auth',
+    tableName: 'Auths',
+    timestamps: true,          // manages created_at, updated_at
+    underscored: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
   });
-  
+
+  Auth.associate = function(models) {
+    if (models.User) {
+      Auth.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
+    }
+  };
+
   return Auth;
 };

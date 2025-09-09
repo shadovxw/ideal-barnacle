@@ -1,35 +1,35 @@
+// server.js
+require('dotenv').config(); // load .env
 const express = require('express');
-const { User, Auth, Subscription, UserDetail } = require('./models');
-
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const db = require('./models'); // Sequelize models/index.js
+const PORT = process.env.PORT || 5000;
 const app = express();
+const router = require('./routes/routes');
+// Middleware
 app.use(express.json());
+app.use(cookieParser());
 
-// Example routes
-app.post('/users', async (req, res) => {
-  try {
-    const user = await User.create(req.body);
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
+const allowedOrigins = ['http://localhost:3000'];
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 
-app.get('/userss', async (req, res) => {
-  try {
-    const users = await User.findAll({
-      include: [
-        { model: Auth, as: 'auths' },
-        { model: Subscription, as: 'subscriptions' },
-        { model: UserDetail, as: 'userDetail' }
-      ]
+
+app.use('/', router);
+
+db.sequelize.authenticate()
+  .then(() => {
+    console.log('✅ Database connected successfully');
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
     });
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+  })
+  .catch((err) => {
+    console.error('❌ Database connection failed:', err);
+  });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+  

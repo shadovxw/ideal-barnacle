@@ -1,4 +1,6 @@
 'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Auths', {
@@ -8,30 +10,41 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
+          model: 'users', // references lowercase table name
           key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
+
       token: {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      createdAt: {
+
+      created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
-      updatedAt: {
+
+      updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
+
+    await queryInterface.addIndex('Auths', ['user_id'], {
+      name: 'auths_user_id_idx'
+    });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Auths');
   }

@@ -1,41 +1,62 @@
 'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Subscriptions', {
+    await queryInterface.createTable('subscriptions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
+          model: 'users', // must be lowercase 'users' to match the users table
           key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
+
       emailid: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          isEmail: true
-        }
+        allowNull: false
       },
-      createdAt: {
-        allowNull: false,
+
+      status: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        defaultValue: 'active'
+      },
+
+      started_at: {
+        allowNull: true,
         type: Sequelize.DATE
       },
-      updatedAt: {
+
+      created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
+      },
+
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
+
+    await queryInterface.addIndex('subscriptions', ['user_id'], {
+      name: 'subscriptions_user_id_idx'
+    });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Subscriptions');
+    await queryInterface.dropTable('subscriptions');
   }
 };
