@@ -58,7 +58,7 @@ exports.register = async (req, res) => {
     // Send welcome email
     try {
       await transporter.sendMail({
-        from: process.env.SENDER_EMAIL,
+        from: ` 'VY FOUNDATION' <${process.env.SMTP_USER}`,
         to: email,
         subject: "Welcome to VY Foundation - Your Account is Ready! 🤝",
         html: welcomeEmailTemplate(name, email)
@@ -160,7 +160,7 @@ exports.sendVerifyOtp = async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: process.env.SENDER_EMAIL,
+      from: ` 'VY FOUNDATION' <${process.env.SMTP_USER}`,
       to: user.email,
       subject: "VY Foundation - Verify Your Account 🔐",
       html: verificationEmailTemplate(user.name, otp)
@@ -244,7 +244,7 @@ exports.sendResetOtp = async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: process.env.SENDER_EMAIL,
+      from: ` 'VY FOUNDATION' <${process.env.SMTP_USER}`,
       to: user.email,
       subject: "VY Foundation - Password Reset Code 🔑",
       html: resetPasswordEmailTemplate(user.name, otp)

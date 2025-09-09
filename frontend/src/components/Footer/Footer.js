@@ -6,7 +6,7 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:8080/";
+axios.defaults.baseURL = "http://localhost:5000/";
 
 const Footer = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -65,7 +65,7 @@ const Footer = () => {
           <h4 className="section-title">Contact Us</h4>
           <div className="contact-icons">
             <a 
-              href="mailto:support@charity.org" 
+              href="mailto:sir.dazai02@gmail.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="contact-link"

@@ -13,7 +13,7 @@ module.exports = {
 
       user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'users', // must be lowercase 'users' to match the users table
           key: 'id'

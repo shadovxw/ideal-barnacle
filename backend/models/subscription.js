@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
 
     emailid: {
@@ -29,12 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-
-    plan: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-
     status: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -45,11 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true
     },
-
-    ends_at: {
-      type: DataTypes.DATE,
-      allowNull: true
-    }
+    
   }, {
     sequelize,
     modelName: 'Subscription',
