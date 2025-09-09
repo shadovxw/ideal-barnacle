@@ -50,7 +50,7 @@ function Gpay() {
         }}
         existingPaymentMethodRequired='false'
         buttonColor="black"
-        buttonType="buy"
+        buttonType="pay"
       ></GooglePayButton>
     </div>
   );
