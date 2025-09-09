@@ -6,7 +6,7 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://vyfoundation-backend.onrender.com/";
 
 const Footer = () => {
   const [hoveredItem, setHoveredItem] = useState(null);

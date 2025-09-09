@@ -4,7 +4,7 @@ import Header from '../header/Header';
 import Footer from '../Footer/Footer';
 import './DonationList.css';
 
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://vyfoundation-backend.onrender.com/";
 
 const DonationsList = () => {
     const [dataList, setDataList] = useState([]);

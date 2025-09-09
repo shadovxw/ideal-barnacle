@@ -4,7 +4,7 @@ import Header from "../header/Header";
 import Footer from "../Footer/Footer";
 import "./Campaign.css";
 
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://vyfoundation-backend.onrender.com/";
 
 const CampaignSection = () => {
   const [dataList, setDataList] = useState([]);
@@ -183,7 +183,8 @@ const CampaignSection = () => {
               >
                 Donate Now
               </button>
-
+                <br />
+                <br />
               <div className="campaign-stats">
                 <div>Total donated: <strong>{formatCurrency(totalDonated)}</strong></div>
                 <div className="goal-text">Goal: {formatCurrency(CAMPAIGN_GOAL)}</div>

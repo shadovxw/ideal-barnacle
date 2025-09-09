@@ -21,7 +21,7 @@
   padding: 2.5rem;                /* 40px */
   border-radius: 0.5rem;         /* 8px */
   box-shadow: 0 0.5rem 1rem var(--dl-shadow);
-  max-width: var(--dl-max-content-width);
+  width: 100%;
   margin: 1.25rem auto;          /* center on page */
   font-family: inherit;          /* inherit from app */
   color: var(--dl-text);
