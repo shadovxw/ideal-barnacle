@@ -115,11 +115,7 @@ npm start              # runs on http://localhost:3000
   ```
   build
   ```
-* Environment Variable:
-
-  ```
-  REACT_APP_API_URL=https://my-backend.onrender.com
-  ```
+* Environment Variables: `BACKEND_URL`.
 
 ---
 
