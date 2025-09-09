@@ -11,7 +11,7 @@ const router = require('./routes/routes');
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000', 'https://vyfoundation-ui.onrender.com'];
 app.use(cors({
   origin: allowedOrigins,
   credentials: true
