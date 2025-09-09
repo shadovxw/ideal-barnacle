@@ -1,79 +1,59 @@
-/* Home container styling */
-.home-container {
-  text-align: center;
-  padding: 20px;
-  max-width: 100%; /* Ensure full width */
-  margin: 0; /* Remove margins */
+/* ---------- Home.css ---------- */
+
+/* Basic resets */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Home content styling */
+/* Reserve header space using a CSS variable set by Header component JS.
+   If you don't have the JS, replace var(--header-height) with a fixed value like 90px. */
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: var(--header-height, 90px);
+  box-sizing: border-box;
+}
+
+/* Main content container */
+.main-content {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Home content */
 .home-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px; /* Add padding inside the container instead of margins */
+  padding-inline: 20px;
+  width: 100%;
 }
 
-.welcome-section h1 {
-  font-size: 3rem;
-  color: #333;
-}
-
-.mission-section h2 {
-  font-size: 2rem;
-  margin-top: 40px;
-}
-
-.highlights-section {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-
-.highlight {
-  width: 30%;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.highlight:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #ff6f61;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #ff4a39;
-  transform: translateY(-5px);
-}
-
-/* Styling for the image, text, and button overlay */
+/* Hero / Image */
 .image-container {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
   overflow: hidden;
-  height: 700px; /* Fixed height to prevent stretching */
+  height: 700px;
 }
 
 .charity-image {
   width: 100%;
   height: 100%;
-
+  object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -81,32 +61,141 @@
   transform: scale(1.05);
 }
 
+/* Overlay text sits above image but below header.
+   z-index 2 ensures it's above the image; header is fixed and higher. */
 .overlay-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: min(90%, 1100px);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  color: white;
-  font-size: 2rem;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  padding-inline: 20px;
+  z-index: 2;
+  box-sizing: border-box;
 }
 
+.hero-title {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+/* CTA */
 .image-button {
-  padding: 10px 20px;
+  padding: 0.75rem 1.5rem;
   background-color: #ff9800;
-  color: white;
+  color: #fff;
   border: none;
+  border-radius: 0.3125rem;
   cursor: pointer;
-  font-size: 1.2em;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.image-button:hover { background-color: #ff3b3b; transform: translateY(-3px); }
+
+/* Welcome & Mission */
+.welcome-section,
+.mission-section {
+  margin-bottom: 60px;
+  padding-inline: 10px;
 }
 
-.image-button:hover {
-  background-color: #ff3b3b;
-  transform: translateY(-5px);
+.welcome-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.welcome-text,
+.mission-text {
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  color: #666;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 18px;
+  color: #333;
+}
+
+/* Highlights */
+.highlights-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding-inline: 10px;
+}
+
+.highlight {
+  background: #fff;
+  min-width: 18rem;
+  max-width: 22rem;
+  flex: 1 1 280px;
+  padding: 1.875rem 1.25rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.08);
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.highlight:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.12);
+}
+
+.highlight-title {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  margin-bottom: 0.75rem;
+  color: #222;
+  text-align: center;
+}
+.highlight-text { color: #666; text-align: center; line-height: 1.5; }
+
+/* Donate / Map */
+.map-container {
+  margin: 40px 0;
+  padding-inline: 20px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .image-container { height: 600px; }
+}
+
+@media (max-width: 768px) {
+  .image-container { height: 480px; }
+  .overlay-text { padding-inline: 15px; }
+  .highlight { width: 100%; max-width: none; }
+}
+
+@media (max-width: 480px) {
+  .image-container { height: 380px; }
+  .hero-title { font-size: 1.4rem; }
+  .image-button { padding: 0.5rem 1rem; font-size: 0.95rem; }
+  .welcome-title { font-size: 1.6rem; }
+  .welcome-text, .mission-text { padding-inline: 8px; }
+}
+
+/* Accessibility */
+.image-button:focus { outline: 3px solid rgba(255,152,0,0.8); outline-offset: 2px; }
+
+/* Print */
+@media print {
+  .image-container { height: auto; }
+  .charity-image { object-fit: contain; max-height: 400px; }
 }

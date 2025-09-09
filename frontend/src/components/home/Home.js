@@ -1,74 +1,83 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import './Home.css';
 import Header from '../header/Header';
 import Footer from '../Footer/Footer';
 import MapComponent from '../map/Map';
 import Donate from '../donate/Donate';
 
-
 const Home = () => {
   const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <div className="page-container">
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2 }}>
-        <Header />
-      </motion.div>
+      <Header />
+
       <main className="main-content">
-        <motion.div className="image-container" initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 1, ease: 'easeInOut' }}>
+        <div className="image-container">
           <img src="photo1.jpg" alt="Charity Image" className="charity-image" />
           <div className="overlay-text">
-            <h2>BECOME PART OF IMPACT WE ARE MAKING</h2>
-            <motion.button
+            <h2 className="hero-title">BECOME PART OF IMPACT WE ARE MAKING</h2>
+            <button
               className="image-button"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
               onClick={() => scrollToSection('donate-section-abcd')}
             >
               Get Involved
-            </motion.button>
+            </button>
           </div>
-        </motion.div>
-        <div className="home-content">
-          <motion.section id="welcome-section" className="welcome-section" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-            <h1>Welcome to Our Charity</h1>
-            <p>
-              We are dedicated to making the world a better place through our community-driven efforts. Join us in our mission to help those in need and make a lasting impact.
-            </p>
-          </motion.section>
-          <motion.section className="mission-section" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
-            <h2>Our Mission</h2>
-            <p>
-              Our mission is to provide essential resources such as food, shelter, and education to underprivileged communities. With your help, we can create sustainable solutions that uplift lives.
-            </p>
-          </motion.section>
-          <motion.section className="highlights-section" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.3 } } }}>
-            <motion.div className="highlight" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-              <h3>Upcoming Events</h3>
-              <p>Join our upcoming charity drives and community events. Every little effort counts!</p>
-            </motion.div>
-            <motion.div className="highlight" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-              <h3>Support Our Campaigns</h3>
-              <p>Support one of our ongoing campaigns and help provide for those in need.</p>
-            </motion.div>
-            <motion.div className="highlight" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-              <h3>Donate Today</h3>
-              <p>Make a difference by donating to our cause. Your contribution can change lives.</p>
-            </motion.div>
-          </motion.section>
         </div>
+
         <div className="home-content">
+          <section
+            id="welcome-section"
+            className="welcome-section"
+          >
+            <h1 className="welcome-title">Welcome to Our Charity</h1>
+            <p className="welcome-text">
+              We are dedicated to making the world a better place through our community-driven efforts.
+              Join us in our mission to help those in need and make a lasting impact.
+            </p>
+          </section>
 
-        <Donate id="donate-section-abcd" /></div>
+          <section
+            className="mission-section"
+          >
+            <h2 className="mission-title">Our Mission</h2>
+            <p className="mission-text">
+              Our mission is to provide essential resources such as food, shelter, and education to
+              underprivileged communities. With your help, we can create sustainable solutions that uplift lives.
+            </p>
+          </section>
 
-        <motion.div className="map-container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+          <section className="highlights-section">
+            <div className="highlight">
+              <h3 className="highlight-title">Upcoming Events</h3>
+              <p className="highlight-text">Join our upcoming charity drives and community events. Every little effort counts!</p>
+            </div>
+            <div className="highlight">
+              <h3 className="highlight-title">Support Our Campaigns</h3>
+              <p className="highlight-text">Support one of our ongoing campaigns and help provide for those in need.</p>
+            </div>
+            <div className="highlight">
+              <h3 className="highlight-title">Donate Today</h3>
+              <p className="highlight-text">Make a difference by donating to our cause. Your contribution can change lives.</p>
+            </div>
+          </section>
+        </div>
+
+        <div className="home-content">
+          <Donate id="donate-section-abcd" />
+        </div>
+
+        <div className="map-container">
           <MapComponent />
-        </motion.div>
+        </div>
       </main>
+
       <Footer />
     </div>
   );
