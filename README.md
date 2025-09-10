@@ -32,21 +32,10 @@ A **full-stack web platform** that enables users to **discover charities, organi
 ---
 
 ## ⚙️ System Architecture
+<img width="1191" height="449" alt="image" src="https://github.com/user-attachments/assets/50651f83-af63-45fd-a6eb-a2eb98044ef9" />
 
-```
-Frontend (React + Tailwind)
-        |
-        v
-Backend API (Express.js / Flask)
-        |
-        v
-Postgres DB (Render)
-```
+<img width="1583" height="439" alt="image" src="https://github.com/user-attachments/assets/88319b95-37d3-4cb5-a5ca-69804fbab071" />
 
-* **Frontend** → Handles UI, consumes backend APIs.
-* **Backend** → REST API, authentication, and business logic.
-* **Database** → Postgres with Sequelize ORM.
-* **Deployment** → All components deployed on Render free tier.
 
 ---
 
