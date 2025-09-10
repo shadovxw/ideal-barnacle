@@ -125,22 +125,3 @@ npm start              # runs on http://localhost:3000
 * 🔜 User donation history
 
 ---
-
-## 🧪 Challenges & Solutions
-
-* **Problem:** Free Render tier doesn’t allow shell access → couldn’t run migrations manually.
-
-  * ✅ **Solution:** Integrated `npm run db:migrate:prod` in build/pre-deploy commands.
-* **Problem:** CORS issues between frontend & backend.
-
-  * ✅ **Solution:** Configured CORS properly with frontend URL whitelisting.
-* **Problem:** Cold starts & connection limits on free Postgres.
-
-  * ✅ **Solution:** Used internal connection strings and Sequelize pooling.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome. For major changes, open an issue first to discuss what you’d like to add.
-
