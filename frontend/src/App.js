@@ -4,6 +4,7 @@ import Home from './components/home/Home';
 import CampaignSection from './components/campaign/Campaign';
 
 import DonationsList from './components/donationList/DonationList';
+import Login from './components/login/login';
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/campaign" element={<CampaignSection />} />
 
           <Route path="/donatelist" element={<DonationsList />} />
