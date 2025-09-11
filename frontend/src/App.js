@@ -18,7 +18,7 @@ function App() {
             <Route path='/verify' element= {<EmailVerify />} />
             <Route path="/campaign" element={<CampaignSection />} />
             <Route path="/donatelist" element={
-              <ProtectedRoute>
+              <ProtectedRoute roles="admin">
               <DonationsList />
               </ProtectedRoute>} />
           </Routes>
