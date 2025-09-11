@@ -39,6 +39,7 @@ const Login = () => {
           email,
           password,
         });
+        console.log("login data from", data)
         if (data.success) {
           setIsLoggedin(true);
           getUserData();

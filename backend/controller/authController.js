@@ -1,7 +1,7 @@
 // controllers/authController.js
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { User, Auth } = require('../models'); // Adjust path if needed
+const { User, Auth } = require('../models'); 
 const transporter = require('../config/mail');
 const { welcomeEmailTemplate } = require('../templates/welcomeEmail');
 const { verificationEmailTemplate } = require('../templates/verificationEmail');
@@ -43,8 +43,8 @@ exports.register = async (req, res) => {
     });
 
     const token = jwt.sign({ id: registerUser.id }, JWT_SECRET, { expiresIn: "7d" });
+    console.log(token)
 
-    // Optionally store token server-side
     if (Auth) {
       try {
         await Auth.create({ user_id: registerUser.id, token });
@@ -55,7 +55,6 @@ exports.register = async (req, res) => {
 
     res.cookie('token', token, cookieOptions());
 
-    // Send welcome email
     try {
       await transporter.sendMail({
         from: ` 'VY FOUNDATION' <${process.env.SMTP_USER}`,
@@ -79,6 +78,7 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
+  console.log("login data", email, password)
 
   if (!email || !password) {
     return res.status(400).json({ success: false, message: "Please provide both email and password" });
@@ -86,6 +86,7 @@ exports.login = async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ where: { email } });
+    console.log("existingUser", existingUser)
     if (!existingUser) {
       return res.status(404).json({ success: false, message: "No account found with this email address" });
     }
