@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, {useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { appContext } from "../context/appContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./Login.css";
 
 const Login = () => {
-  const { backendUrl, setIsLoggedin, setUserData } = useContext(appContext);
-
+  const backendUrl = "http://localhost:5000"
   const [state, setState] = useState("Sign Up");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -28,11 +26,12 @@ const Login = () => {
         });
 
         if (data.success) {
-          setIsLoggedin(true);
-          // IMPORTANT: set the user object returned by your backend
-          // many apis return data.user or data.userData — adapt to your backend response
-          setUserData(data.user || data.userData || data);
-          navigate("/");
+          await axios.post(backendUrl + `/send-verify-otp/${data.userId}`)
+          localStorage.setItem("LoggedInUser", data.userId);
+          localStorage.setItem("LoggedInUserName", data.userName);
+          console.log("before verify")
+          navigate("/verify");
+          console.log("after verify")
         } else {
           toast.error(data.message || "Registration failed");
         }
@@ -42,12 +41,11 @@ const Login = () => {
           password,
         });
 
-        console.log("login response:", data);
+        console.log("login response:", data.userId);
 
         if (data.success) {
-          setIsLoggedin(true);
-          // Save user info from backend (adapt to actual shape)
-          setUserData(data.user || data.userData || data);
+          localStorage.setItem("LoggedInUser", data.userId);
+          localStorage.setItem("LoggedInUserName", data.userName);
           navigate("/");
         } else {
           toast.error(data.message || "Login failed");

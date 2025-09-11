@@ -1,14 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { assets } from "../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { appContext } from "../context/appContext";
 import { useNavigate } from "react-router-dom";
 
 const EmailVerify = () => {
   axios.defaults.withCredentials = true;
-  const { backendUrl, isLoggedin, userData, getUserData } =
-    useContext(appContext);
+  const backendUrl = "http://localhost:5000"
 
   const navigate = useNavigate();
   
@@ -36,17 +33,18 @@ const EmailVerify = () => {
 
   const onSubmitHandler = async (e) => {
     try {
+      const id = localStorage.getItem("LoggedInUser");
+      console.log("bfakfse", id)
       e.preventDefault();
       const otpArray = inputRefs.current.map((e) => e.value);
       const otp = otpArray.join("");
       const { data } = await axios.post(
-        backendUrl + "/api/auth/verify-account",
+        backendUrl + `/verify-otp/${id}`,
         { otp }
       );
 
       if (data.sucess) {
         toast.success(data.message);
-        getUserData();
         navigate("/");
       } else {
         toast.error(data.message);
@@ -56,16 +54,17 @@ const EmailVerify = () => {
     }
   };
 
-  useEffect(() => {
+useEffect(() => {
+  const id = localStorage.getItem("LoggedInUser");
+  if (!id) {
+    navigate("/", { replace: true });
+  }
+}, [navigate]);
 
-    isLoggedin && userData && userData.isAccountVerified && navigate("/");
-    
-  }, [isLoggedin, userData]);
   return (
     <div className="bg-gradient-to-br from-blue-200 to-pink-400 min-w-screen min-h-screen flex flex-col justify-center items-center">
       <img
         onClick={() => navigate("/")}
-        src={assets.myLogo}
         alt=""
         className="absolute left-5 sm:left-20 top-0  sm:w-32 cursor-pointer shadow-lg w-96 text-sm"
       />

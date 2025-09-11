@@ -6,12 +6,12 @@ const subscriptionController = require("../controller/subscribe")
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
-router.get('/userdata', authController.getUserData )
+router.get('/user/data/:id', authController.getUserData )
 router.post('/logout', authMiddleware, authController.logOut);
 router.get('/is-auth', authMiddleware, authController.isUserAuthenticate);
 
-router.post('/send-verify-otp', authMiddleware, authController.sendVerifyOtp);
-router.post('/verify-otp', authMiddleware, authController.verifyOtp);
+router.post('/send-verify-otp/:id', authController.sendVerifyOtp);
+router.post('/verify-otp/:id', authMiddleware, authController.verifyOtp);
 
 router.post('/send-reset-otp', authController.sendResetOtp);
 router.post('/verify-reset-otp', authController.verifyResetOtp);

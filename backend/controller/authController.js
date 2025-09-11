@@ -65,10 +65,12 @@ exports.register = async (req, res) => {
     } catch (e) {
       console.error('Failed to send welcome email (non-fatal):', e);
     }
-
+    
     return res.status(201).json({
       success: true,
-      message: "Welcome to VY Foundation! Your account has been created successfully."
+      message: "Welcome to VY Foundation! Your account has been created successfully.",
+      userId:  registerUser.id,
+      userName: registerUser.name
     });
   } catch (error) {
     console.error('Registration Error:', error);
@@ -112,6 +114,7 @@ exports.login = async (req, res) => {
       success: true,
       message: `Welcome back to VY Foundation, ${existingUser.name}!`,
       userId:  existingUser.id,
+      userName: existingUser.name
     });
   } catch (error) {
     console.error('Login Error:', error);
@@ -121,11 +124,11 @@ exports.login = async (req, res) => {
 
 exports.getUserData = async (req, res) => {
   try {
-    const userId = req.userId;
+    const userId = req.params.id;
+    console.log(userId)
 
-    const user = await User.findByPk(userId, {
-      attributes: ["name", "isAccountVerified"], 
-    });
+    const user = await User.findByPk(userId);
+    console.log(user)
 
     if (!user) {
       return res.json({ success: false, message: "User not Found" });
@@ -135,7 +138,8 @@ exports.getUserData = async (req, res) => {
       success: true,
       userData: {
         name: user.name,
-        isAccountVerified: user.isAccountVerified,
+        isAccountVerified: user.is_account_verified,
+        role: user.role
       },
     });
   } catch (error) {
@@ -170,10 +174,12 @@ exports.logOut = async (req, res) => {
 
 exports.sendVerifyOtp = async (req, res) => {
   try {
-    const userId = req.userId;
+    const userId = req.params.id;
+    console.log(userId)
     if (!userId) return res.status(401).json({ success: false, message: "Unauthorized" });
 
     const user = await User.findByPk(userId);
+    console.log("bdcakfwqd verify", user)
     if (!user) return res.status(404).json({ success: false, message: "User account not found" });
 
     if (user.is_account_verified) {
@@ -194,7 +200,7 @@ exports.sendVerifyOtp = async (req, res) => {
       html: verificationEmailTemplate(user.name, otp)
     });
 
-    return res.json({ success: true, message: "Verification code sent to your email. Please check your inbox." });
+    return res.status(200).json({ success: true, message: "Verification code sent to your email. Please check your inbox." });
   } catch (error) {
     console.error('Send Verify OTP Error:', error);
     return res.status(500).json({ success: false, message: "Failed to send verification code. Please try again." });
@@ -203,12 +209,15 @@ exports.sendVerifyOtp = async (req, res) => {
 
 exports.verifyOtp = async (req, res) => {
   const { otp } = req.body;
-  const userId = req.userId;
+  const userId = req.params.id;
+
+  console.log(otp, userId)
 
   if (!otp) return res.status(400).json({ success: false, message: "Please enter the verification code" });
 
   try {
     const user = await User.findByPk(userId);
+    console.log("eahfhqewifqf verify otp", user)
     if (!user) return res.status(404).json({ success: false, message: "User account not found" });
 
     if (!user.verify_otp || user.verify_otp !== otp) {

@@ -2,12 +2,12 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useContext } from "react";
-import { appContext } from "../context/appContext";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const ResetPassword = () => {
+  const backendUrl = "http://localhost:5000";
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -15,7 +15,6 @@ const ResetPassword = () => {
   const [otp, setOtp] = useState('');
   const [isOtpSubmitted, setIsOtpSubmitted] = useState(false);
 
-  const { backendUrl } = useContext(appContext);
   axios.defaults.withCredentials = true; // Sends the cookie with req
 
   const inputRefs = React.useRef([]);
@@ -73,7 +72,7 @@ const ResetPassword = () => {
   const onSubmitNewPassword = async (e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.post(backendUrl + '/api/auth/reset-password',{email,otp,newPassword});
+      const {data} = await axios.post(backendUrl + `reset-password/`,{email,otp,newPassword});
       data.success ? toast.success(data.message) : toast.error(data.message);
       data.success && navigate('/login');
      } catch (error) {

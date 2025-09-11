@@ -3,23 +3,27 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
 import CampaignSection from './components/campaign/Campaign';
 import DonationsList from './components/donationList/DonationList';
-import Login from './components/login/Login';
-import { AppContextProvider } from './components/context/appContext';
+import ProtectedRoute from './components/context/privateRoute';
+import Login from './components/loginout/Login';
+import EmailVerify from './components/Login/EmailVerify';
+
 
 function App() {
   return (
-    <AppContextProvider>
       <Router>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path='/verify' element= {<EmailVerify />} />
             <Route path="/campaign" element={<CampaignSection />} />
-            <Route path="/donatelist" element={<DonationsList />} />
+            <Route path="/donatelist" element={
+              <ProtectedRoute>
+              <DonationsList />
+              </ProtectedRoute>} />
           </Routes>
         </div>
       </Router>
-    </AppContextProvider>
   );
 }
 
