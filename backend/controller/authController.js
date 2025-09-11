@@ -110,11 +110,36 @@ exports.login = async (req, res) => {
 
     return res.json({
       success: true,
-      message: `Welcome back to VY Foundation, ${existingUser.name}!`
+      message: `Welcome back to VY Foundation, ${existingUser.name}!`,
+      userId:  existingUser.id,
     });
   } catch (error) {
     console.error('Login Error:', error);
     return res.status(500).json({ success: false, message: "Login failed. Please try again." });
+  }
+};
+
+exports.getUserData = async (req, res) => {
+  try {
+    const userId = req.userId;
+
+    const user = await User.findByPk(userId, {
+      attributes: ["name", "isAccountVerified"], 
+    });
+
+    if (!user) {
+      return res.json({ success: false, message: "User not Found" });
+    }
+
+    res.json({
+      success: true,
+      userData: {
+        name: user.name,
+        isAccountVerified: user.isAccountVerified,
+      },
+    });
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
   }
 };
 
@@ -140,6 +165,8 @@ exports.logOut = async (req, res) => {
     return res.status(500).json({ success: false, message: "Logout failed. Please try again." });
   }
 };
+
+
 
 exports.sendVerifyOtp = async (req, res) => {
   try {

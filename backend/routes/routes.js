@@ -6,6 +6,7 @@ const subscriptionController = require("../controller/subscribe")
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+router.get('/userdata', authController.getUserData )
 router.post('/logout', authMiddleware, authController.logOut);
 router.get('/is-auth', authMiddleware, authController.isUserAuthenticate);
 
