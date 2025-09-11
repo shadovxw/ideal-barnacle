@@ -24,7 +24,7 @@ function cookieOptions() {
 
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
-
+  console.log(name, email, password)
   if (!name || !email || !password) {
     return res.status(400).json({ success: false, error: "Please provide all required details" });
   }
